@@ -1,0 +1,17 @@
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\SandwichTest.exe
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\SandwichTest.deps.json
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\SandwichTest.runtimeconfig.json
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\SandwichTest.dll
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\SandwichTest.pdb
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\SandwichTest.csproj.AssemblyReference.cache
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\SandwichTest.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\SandwichTest.AssemblyInfoInputs.cache
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\SandwichTest.AssemblyInfo.cs
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\SandwichTest.csproj.CoreCompileInputs.cache
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\SandwichTest.dll
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\refint\SandwichTest.dll
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\SandwichTest.pdb
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\SandwichTest.genruntimeconfig.cache
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\ref\SandwichTest.dll
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\res\ingredients.csv
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\res\sandwiches.csv
