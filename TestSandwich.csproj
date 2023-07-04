@@ -8,17 +8,68 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="res\ingredients.csv" />
-    <None Remove="res\sandwiches.csv" />
+    <None Remove="resources\config\config.json" />
+    <None Remove="resources\ingredients.csv" />
+    <None Remove="resources\sales\day_1.sales" />
+    <None Remove="resources\sales\day_10.sales" />
+    <None Remove="resources\sales\day_2.sales" />
+    <None Remove="resources\sales\day_3.sales" />
+    <None Remove="resources\sales\day_4.sales" />
+    <None Remove="resources\sales\day_5.sales" />
+    <None Remove="resources\sales\day_6.sales" />
+    <None Remove="resources\sales\day_7.sales" />
+    <None Remove="resources\sales\day_8.sales" />
+    <None Remove="resources\sales\day_9.sales" />
+    <None Remove="resources\sandwiches.csv" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="res\ingredients.csv">
+    <Content Include="resources\config\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\day_10.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="resources\sales\day_1.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\day_2.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\day_3.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\day_4.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\day_5.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\day_6.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\day_7.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\day_8.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\day_9.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\stock\ingredients.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="res\sandwiches.csv">
+    <Content Include="resources\stock\sandwiches.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="resources\reports\" />
   </ItemGroup>
 
 </Project>

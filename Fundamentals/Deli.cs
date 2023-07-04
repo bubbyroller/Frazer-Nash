@@ -1,4 +1,7 @@
-﻿/**
+﻿
+
+using System.IO;
+/**
 * File: Deli.cs
 * Author: Chris Goodings
 * Date: 29/06/2023
@@ -14,6 +17,8 @@ namespace TestSandwich.Fundamentals
     {
         /* ============================== Variables and Constants ============================ */
         Dictionary<char, double> Output = new Dictionary<char, double>();
+        public Dictionary<char, double> ingredients;
+        public List<Sandwich> sandwiches = new List<Sandwich>();
 
         /* =================================== Constructor =================================== */
 
@@ -23,8 +28,7 @@ namespace TestSandwich.Fundamentals
         public Deli()
         {
 
-            Dictionary<char, double> ingredients;
-            List<Sandwich> sandwiches = new List<Sandwich>();
+            
             const string FN_INGREDIENTS = "ingredients.csv";
             const string FN_SANDWICHES = "sandwiches.csv";
 
@@ -32,11 +36,14 @@ namespace TestSandwich.Fundamentals
             {
 
                 // Connects to the ingredients file and pulls in the string list of ingredients
-                Connection connIngredients = new Connection(FN_INGREDIENTS, 'r');
+                
+                
+                Connection connIngredients = new Connection("stock", FN_INGREDIENTS, 'r');
                 createIngredientList(connIngredients.getData());
 
                 // Connects to the sandwiches file and pulls in the string list of sandwiches
-                Connection connSandwiches = new Connection(FN_SANDWICHES, 'r');
+                
+                Connection connSandwiches = new Connection("stock", FN_SANDWICHES, 'r');
                 sandwiches = createSadwichList(connSandwiches.getData());
 
                 Display(sandwiches, Output);
@@ -59,6 +66,7 @@ namespace TestSandwich.Fundamentals
         private void Display(List<Sandwich> sandwiches, Dictionary<char, double> ingredients)
         {
             //Create headers with padding and spacing
+            Console.WriteLine("Task 1:");
             Console.WriteLine(String.Format("{0}| {1}\t| {2}\t| {3}", "Item".PadRight(24), "Cost", "Price", "Profit"));
             Console.WriteLine(String.Format("{0}| {1}| {1}| {1}", "".PadRight(24,'-'), "".PadRight(6, '-')));
             

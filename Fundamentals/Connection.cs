@@ -17,6 +17,8 @@ namespace TestSandwich.Fundamentals
         private StreamWriter writer;
         private string data;
         string path;
+        const string RESOURCE_DIR = "resources\\";
+        string SubFolder = "stock\\";
 
         /* =================================== Constructor =================================== */
         /// <summary>
@@ -24,12 +26,13 @@ namespace TestSandwich.Fundamentals
         /// </summary>
         /// <param name="pFileName"></param>
         /// <param name="pMode"></param>
-        public Connection(string pFileName, char pMode)
+        public Connection(string pSubFolder, string pFileName, char pMode, string pData = "")
         {
             try
             {
+                SubFolder = pSubFolder + "\\" ;
                 //Gets the path to the file in the res folder
-                path = Path.Combine(Environment.CurrentDirectory, @"res\" + pFileName);
+                path = Path.Combine(Environment.CurrentDirectory, RESOURCE_DIR + SubFolder + pFileName);
 
                 //Choose whether to read or write to a file based on the mode
                 switch (pMode)
@@ -41,6 +44,15 @@ namespace TestSandwich.Fundamentals
 
                     case 'w':
                         // Write  to file ** CODE TO BE ADDED IF FILE WRITING NEEDED **
+                        SubFolder = pSubFolder + "\\";
+                        string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+                        path = projectDirectory + "\\" + RESOURCE_DIR + SubFolder + pFileName;
+                        
+                        using (StreamWriter w = File.CreateText(path))
+                        {
+                            w.Write(pData);
+                            w.Close();
+                        }
                         break;
                     default:
                         Console.WriteLine("Need to select a read or write option.");
@@ -60,11 +72,7 @@ namespace TestSandwich.Fundamentals
                     reader.Close();
                 }
 
-                if (pMode == 'w')
-                {
-
-                    writer.Close();
-                }
+                
             }
         }
 

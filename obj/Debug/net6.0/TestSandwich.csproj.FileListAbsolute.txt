@@ -1,6 +1,4 @@
 D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\TestSandwich.exe
-D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\res\ingredients.csv
-D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\res\sandwiches.csv
 D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\TestSandwich.deps.json
 D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\TestSandwich.runtimeconfig.json
 D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\TestSandwich.dll
@@ -15,3 +13,16 @@ D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\refint\TestSandwi
 D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\TestSandwich.pdb
 D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\TestSandwich.genruntimeconfig.cache
 D:\Projects\C-Sharp\SandwichTest\SandwichTest\obj\Debug\net6.0\ref\TestSandwich.dll
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\resources\stock\ingredients.csv
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\resources\stock\sandwiches.csv
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\resources\sales\day_10.sales
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\resources\sales\day_1.sales
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\resources\sales\day_2.sales
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\resources\sales\day_3.sales
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\resources\sales\day_4.sales
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\resources\sales\day_5.sales
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\resources\sales\day_6.sales
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\resources\sales\day_7.sales
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\resources\sales\day_8.sales
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\resources\sales\day_9.sales
+D:\Projects\C-Sharp\SandwichTest\SandwichTest\bin\Debug\net6.0\resources\config\config.json
