@@ -8,8 +8,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="resources\config\config.json" />
+    <None Remove="resources\config\185673.json" />
+    <None Remove="resources\config\267534.json" />
     <None Remove="resources\ingredients.csv" />
+    <None Remove="resources\sales\185673_day_11.sales" />
+    <None Remove="resources\sales\185673_day_12.sales" />
+    <None Remove="resources\sales\185673_day_13.sales" />
+    <None Remove="resources\sales\185673_day_14.sales" />
+    <None Remove="resources\sales\185673_day_15.sales" />
+    <None Remove="resources\sales\185673_day_16.sales" />
+    <None Remove="resources\sales\185673_day_17.sales" />
+    <None Remove="resources\sales\185673_day_18.sales" />
+    <None Remove="resources\sales\185673_day_19.sales" />
+    <None Remove="resources\sales\185673_day_20.sales" />
+    <None Remove="resources\sales\267534_day_11.sales" />
+    <None Remove="resources\sales\267534_day_12.sales" />
+    <None Remove="resources\sales\267534_day_13.sales" />
+    <None Remove="resources\sales\267534_day_14.sales" />
+    <None Remove="resources\sales\267534_day_15.sales" />
+    <None Remove="resources\sales\267534_day_16.sales" />
+    <None Remove="resources\sales\267534_day_17.sales" />
+    <None Remove="resources\sales\267534_day_18.sales" />
+    <None Remove="resources\sales\267534_day_19.sales" />
+    <None Remove="resources\sales\267534_day_20.sales" />
     <None Remove="resources\sales\day_1.sales" />
     <None Remove="resources\sales\day_10.sales" />
     <None Remove="resources\sales\day_2.sales" />
@@ -24,7 +45,70 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="resources\config\config.json">
+    <Content Include="resources\config\185673.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\config\267534.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\185673_day_11.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\185673_day_12.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\185673_day_13.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\185673_day_14.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\185673_day_15.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\185673_day_16.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\185673_day_17.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\185673_day_18.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\185673_day_19.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\185673_day_20.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\267534_day_11.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\267534_day_12.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\267534_day_13.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\267534_day_14.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\267534_day_15.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\267534_day_16.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\267534_day_17.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\267534_day_18.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\267534_day_19.sales">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sales\267534_day_20.sales">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\sales\day_10.sales">

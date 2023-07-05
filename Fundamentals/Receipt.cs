@@ -1,89 +1,102 @@
 ﻿/**
 * File: Receipt.cs
 * Author: Chris Goodings
-* Date: 03/07/2023
+* Date: 29/06/2023
 * 
-* Description: Class file that creates the receipt
+* Description: Abstract class for the receipts - allows child classes to be added to a 
+*               generic Receipt list as well as providing the structure contract for the
+*               chhild classes. Common methods are declared here.
 *              
 */
 
 namespace TestSandwich.Fundamentals
 {
-    public class Receipt
+    public abstract class Receipt
     {
-        /* ============================== Variables and Constants ============================ */
-        public int Sales { get; set; }
-        public double Revenue { get; set; }
-        public double Profit { get; set; }
-        public string Version { get; set; } 
-        public string ReceiptDate { get; set; }
-        public int TillId { get; set; }
-        List<Transaction> Transactions = new List<Transaction>();
+        /* ============================== Properties ============================ */
+        public string ReceiptDate { get; set; } = string.Empty;
+        public int EPOSId { get; set; } = 0;
+        public string EPOSVersion { get; set; } = string.Empty;
+        public Dictionary<string, string> EPOSSandwichMap { get; set; } = new Dictionary<string, string>();
+        public List<Transaction> ReceiptTransactions { get; set; } = new List<Transaction>();
+        public int ReceiptSales { get; set; } = 0;
+        public double ReceiptRevenue { get; set; } = 0.0;
+        public double ReceiptProfit { get; set; } = 0.0;
 
+        /* ============================== Methods ============================ */
+        /// <summary>
+        /// Base method that allows child to define how to get config data
+        /// </summary>
+        /// <param name="pEPOSId"></param>
+        private void ConfigureEPOSSystem(int pEPOSId) { }
 
-        /* =================================== Constructor =================================== */
-        public Receipt(string ReceiptData, Deli deli)
+        /* ------------------------------------------------------------------------------------ */
+
+        /// <summary>
+        /// Common code to select the appropriate Transaction class for the legacy and updated 
+        /// file data
+        /// </summary>
+        /// <param name="pTransactionData"></param>
+        public void GetReceiptTransactions(string pTransactionData)
         {
-            string[] strings = ReceiptData.Split("\r\n\r");
-            for(int line = 0; line < strings.Length; line++)
+            // Updated file data
+            if(EPOSVersion == "v2.0")
             {
-                if (line  == 0)
-                {
-                    string[] FirstRow = strings[line].Split("\r\n");
-                    Version = FirstRow[0];
-
-                    string[] ReceiptDetails = FirstRow[1].Split(" ");
-                    ReceiptDate = ReceiptDetails[0].Trim();
-                    TillId = int.Parse(ReceiptDetails[1].Trim());
-                    
-                }else if(strings[line] != "\n")
-                {
-                    Transactions.Add(new Transaction(strings[line], deli));
-                }
+                ReceiptTransactions.Add(new TransactionVTwo(pTransactionData, EPOSId));
             }
-
-            SetData();
-
+            // Legacy data
+            else
+            {
+                ReceiptTransactions.Add(new TransactionVOne(pTransactionData, EPOSId));
+            }
         }
 
-        /* ================================= Secondary Methods ================================ */
-        public void Display()
+        /* ------------------------------------------------------------------------------------ */
+        /// <summary>
+        /// Common code that enummerates the transaction data to the receipt totals
+        /// </summary>
+        public void SetData()
+        {
+            foreach (Transaction transaction in ReceiptTransactions)
+            {
+                ReceiptRevenue += transaction.TransactionTotal;
+                ReceiptSales += transaction.NumberOfItems;
+                ReceiptProfit += transaction.TransactionProfit;
+            }
+        }
+
+        /* ------------------------------------------------------------------------------------ */
+
+        /// <summary>
+        /// Common code that displays the formatted data to the CONSOLE - NOT CSV
+        /// </summary>
+        public void DisplayTotals()
         {
             string output = string.Format("{0}| {1}| {2}| {3}",
                 ReceiptDate.PadRight(10),
-                Sales.ToString().PadRight(8),
-                string.Format("{0:C}", Revenue).PadRight(8),
-                string.Format("{0:C}", Profit).PadRight(8));
+                ReceiptSales.ToString().PadRight(8),
+                string.Format("{0:C}", ReceiptRevenue).PadRight(8),
+                string.Format("{0:C}", ReceiptProfit).PadRight(8));
             Console.WriteLine(output);
         }
 
-        public string DisplayCSV()
+        /* ------------------------------------------------------------------------------------ */
+
+        /// <summary>
+        /// Common code that generates the CSV format for the data
+        /// </summary>
+        /// <returns></returns>
+        public string GenerateCSVData()
         {
             string output = string.Format("{0},{1},{2},{3}\r\n",
                 ReceiptDate,
-                Sales.ToString(),
-                string.Format("{0:C}", Revenue),
-                string.Format("{0:C}", Profit));
+                ReceiptSales.ToString(),
+                string.Format("{0:C}", ReceiptRevenue),
+                string.Format("{0:C}", ReceiptProfit));
 
             return output;
         }
 
-        /* ------------------------------------------------------------------------------------ */
-        public void SetData()
-        {
-            foreach (Transaction transaction in Transactions)
-            {
-                Revenue += transaction.TransactionTotal;
-                Sales += transaction.NumberOfSales;
-                Profit += transaction.TransactionProfit;
-            }
-        }
-
-        /* ------------------------------------------------------------------------------------ */
-       
-
-
         /* ========================================= EOF ======================================== */
     }
 }
-

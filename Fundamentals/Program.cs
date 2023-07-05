@@ -1,7 +1,4 @@
-﻿
-
-using System.Text.Json;
-/**
+﻿/**
 * File: Program.cs
 * Author: Chris Goodings
 * Date: 29/06/2023
@@ -15,14 +12,11 @@ namespace TestSandwich.Fundamentals
     {
         static void Main(string[] args)
         {
-            //Calls the Deli class which is where the main program code runs from
-            //Deli deli = new Deli();
+            // Creates the Deli instance which brings together the Sandwiches and ingredients
+            Deli.Create();
 
             //Calls the EPOS class which runs the till system
             EPOS ePOS = new EPOS();
-
-            
-            
         }
     }
 }

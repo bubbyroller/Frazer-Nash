@@ -51,6 +51,7 @@ namespace TestSandwich.Fundamentals
             // Strip the special chars and parse to double
             double Output = 0f;
 
+            // Removes £ from text string
             if (UnitCost.StartsWith('£'))
             {
                 Output = double.Parse(UnitCost.Remove(0, 1));

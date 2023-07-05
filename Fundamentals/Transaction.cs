@@ -1,115 +1,128 @@
-﻿
-
-using System.Text.Json;
-using System.Transactions;
+﻿using System.Text.Json;
 /**
-* File: Receipt.cs
+* File: Transaction.cs
 * Author: Chris Goodings
 * Date: 03/07/2023
 * 
-* Description: Class file that creates the receipt
+* Description: Class file that creates an abstract class for the Transactions
 *              
 */
 
 namespace TestSandwich.Fundamentals
 {
-    public class Transaction
+    public abstract class Transaction
     {
         /* ============================== Variables and Constants ============================ */
-        public string TransactionNumber { get; set; }
-        public string TransactionTime { get; set; }
-        public int NumberOfSales { get; set; }
-        
+        public string TransactionNumber { get; set; } = string.Empty;
+        public string TransactionTime { get; set; } = string.Empty;
+        public int NumberOfItems { get; set; } = 0;
+
         public (string PurchaseId, int ProductCode, int PurchaseQuantity) Purchase;
-        public List<(string, int, int)> Purchases = new List<(string, int, int)> ();
-
-        public string PaymentType { get; set; }
-        public double TransactionTotal { get; set; }
-
-        public double TransactionProfit { get; set; }
-
-        Deli deli;
+        public string PaymentType { get; set; } = string.Empty;
+        public double TransactionTotal { get; set; } = 0.0;
+        public List<(string, int, int)> Purchases { get; set; } = new List<(string, int, int)>();
+        public double TransactionProfit { get; set; } = 0.0;
+        public double CardPaid { get; set; } = 0.0;
 
 
         /* =================================== Constructor =================================== */
-        public Transaction(string TransactionData, Deli pDeli)
-        {
-            deli = pDeli;
-            string[] IndividualTransactions = TransactionData.Trim().Split("\r\n\r");
-
-            foreach(string line in IndividualTransactions)
-            {
-                string[] TransactionDetails = line.Split("\r\n");
-                for (int row = 0; row < TransactionDetails.Length; row++)
-                {
-
-                    if (row == 0)
-                    {
-                        string[] FirstRow = TransactionDetails[row].Split(' ');
-                        TransactionNumber = FirstRow[0].Trim();
-                        TransactionTime = FirstRow[1].Trim();
-                        NumberOfSales = int.Parse(FirstRow[2].Trim());
-
-                    }
-                    else if (row == TransactionDetails.Length - 1)
-                    {
-                        string[] LastRow = TransactionDetails[row].Split(' ');
-                        PaymentType = LastRow[0].Trim();
-                        TransactionTotal += double.Parse(LastRow[1].Remove(0, 1).Trim());
-                    }
-                    else
-                    {
-                        string[] DataRow = TransactionDetails[row].Split(' ');
-                        Purchase.PurchaseId = DataRow[0].Trim();
-                        Purchase.ProductCode = int.Parse(DataRow[1].Trim());
-                        Purchase.PurchaseQuantity = int.Parse(DataRow[2].Trim());
-
-                        Purchases.Add(Purchase);
-                    } 
-                }
-            }
-
-            CalculateProfit();
-        }
+        
 
         /* ================================= Secondary Methods ================================ */
+
+        /// <summary>
+        /// Common code that separates the transactions into individual rows
+        /// </summary>
+        /// <param name="pTransactionData"></param>
+        /// <returns>String array of transaction data</returns>
+        public string[] GetTrasactionDetails(string pTransactionData){
+            return pTransactionData.Trim().Split("\r\n");
+        }
+
+        /* ------------------------------------------------------------------------------------ */
+
+        /// <summary>
+        /// Sets the header properties for the transaction
+        /// </summary>
+        /// <param name="pTransactionData"></param>
+        public void GetTransactionHeader(string pTransactionData)
+        {
+            string[] FirstRow = pTransactionData.Split(' ');
+            TransactionNumber = FirstRow[0].Trim();
+            TransactionTime = FirstRow[1].Trim();
+            NumberOfItems = int.Parse(FirstRow[2].Trim());
+        }
+
+        /* ------------------------------------------------------------------------------------ */
+
+        /// <summary>
+        /// Common code that gets the individual purchases
+        /// </summary>
+        /// <param name="pTransactionData"></param>
+        public void GetIndividualPurchases(string pTransactionData) { }
+
+        /* ------------------------------------------------------------------------------------ */
+
+        /// <summary>
+        /// Common code that gets the payment details from the transaction
+        /// </summary>
+        /// <param name="pTransactionData"></param>
+        private void GetPaymentDetails(string pTransactionData) { }
+
+        /* ------------------------------------------------------------------------------------ */
+
+        /// <summary>
+        /// Reads the config file to match the EPOS sandwich codes against the Deli sandwich map
+        /// and then accumulates the profit for the transaction
+        /// </summary>
+        /// <param name="pTillID"></param>
+        public void CalculateTransactionProfit(int pTillID) {
+
+            // Checks that the JSON file is accessible
+            if(File.ReadAllText($"./resources/config/{pTillID.ToString()}.json") is not null)
+            {
+                // Reads in the JSON config
+                string text = File.ReadAllText($"./resources/config/{pTillID}.json");
+
+                // Checks that the JSON file is parsable
+                if (JsonSerializer.Deserialize<Config>(text) is not null )
+                {
+                    // Parse JSON file
+                    Config config = JsonSerializer.Deserialize<Config>(text);
+
+                    // Iterate the tuple list of purchaes
+                    foreach ((string PurchaseId, int ProductCode, int PurchaseQuantity) purchase in Purchases)
+                    {
+                        // Gets the product code for the purchase
+                        string sandwich = config.sandwiches[purchase.ProductCode.ToString()];
+
+                        // Iterate the sandwich list
+                        foreach (Sandwich butty in Deli.SandwichList)
+                        {
+                            // Compare the product code and sandwich code
+                            if (butty.Name == sandwich)
+                            {
+                                // Accumulate the profit based on sandwich profit and number purchased
+                                TransactionProfit += butty.Profit * purchase.PurchaseQuantity;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /* ------------------------------------------------------------------------------------ */
+
+        /// <summary>
+        /// Displays the transaction details to the console - not CSV
+        /// </summary>
         public void Display()
         {
             string output = string.Format("Number: {0}, Time: {1}, Sales: {2}, Payment: {3}, Amount: {4}",
-                TransactionNumber, TransactionTime, NumberOfSales, PaymentType, TransactionTotal.ToString());
+                TransactionNumber, TransactionTime, NumberOfItems, PaymentType, TransactionTotal.ToString());
 
             Console.WriteLine(output);
         }
-
-        /* ------------------------------------------------------------------------------------ */
-        public void CalculateProfit()
-        {
-            string text = File.ReadAllText(@"./resources/config/config.json");
-            Config config = JsonSerializer.Deserialize<Config>(text);
-
-            double profit = 0.0;
-
-            foreach((string PurchaseId, int ProductCode, int PurchaseQuantity) purchase in Purchases)
-            {
-               
-                string sandwich = config.sandwiches[purchase.ProductCode.ToString()];
-                foreach(Sandwich butty in deli.sandwiches)
-                {
-                    if(butty.Name == sandwich)
-                    {
-                        profit += butty.Profit * purchase.PurchaseQuantity;
-                    }
-                }
-            }
-
-            
-
-            TransactionProfit = profit;
-        }
-
-        /* ------------------------------------------------------------------------------------ */
-
-
 
         /* ========================================= EOF ======================================== */
     }
